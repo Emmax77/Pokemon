@@ -80,7 +80,27 @@ public class Proceso extends HttpServlet {
         processRequest(request, response);
         
         
-       
+        
+        try { // Call Web Service Operation
+            com.pandatech.gatewayws.Facturacion port = service.getFacturacionPort();
+            // TODO initialize WS operation arguments here
+            java.lang.String usuario = request.getParameter("usuario");
+            java.lang.String password = request.getParameter("password");
+            java.lang.String rutaCertificadop12 = "";
+            java.lang.String pin = "";
+            java.lang.String rutaXml = "";
+            java.lang.String rutaGuardado = "";
+            java.lang.String tipoIdEmisor = "";
+            java.lang.String numeroIdEmisor = "";
+            java.lang.String tipoIdReceptor = "";
+            java.lang.String numeroIdReceptor = "";
+            // TODO process result here
+            java.lang.String result = port.facturacion(usuario, password, rutaCertificadop12, pin, rutaXml, rutaGuardado, tipoIdEmisor, numeroIdEmisor, tipoIdReceptor, numeroIdReceptor);
+            System.out.println("Result = "+result);
+        } catch (Exception ex) {
+            // TODO handle custom exceptions here
+        }
+
 
         
         
