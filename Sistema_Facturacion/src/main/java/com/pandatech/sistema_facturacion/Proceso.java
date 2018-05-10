@@ -80,18 +80,7 @@ public class Proceso extends HttpServlet {
         processRequest(request, response);
         
         
-        try { // Call Web Service Operation
-            com.pandatech.gatewayws.Facturacion port = service.getFacturacionPort();
-            // TODO initialize WS operation arguments here
-            java.lang.String usuario = request.getParameter("usuario");
-            java.lang.String password = request.getParameter("password");
-            // TODO process result here
-            java.lang.String result = port.autenticacion(usuario, password);
-            System.out.println("Result = "+result);
-            System.out.println(usuario + password);
-        } catch (Exception ex) {
-            // TODO handle custom exceptions here
-        }
+       
 
         
         
