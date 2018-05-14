@@ -24,9 +24,11 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _FacturacionResponse_QNAME = new QName("http://gatewayws.pandatech.com/", "FacturacionResponse");
+    private final static QName _Facturar_QNAME = new QName("http://gatewayws.pandatech.com/", "facturar");
+    private final static QName _FacturarResponse_QNAME = new QName("http://gatewayws.pandatech.com/", "facturarResponse");
     private final static QName _InterruptedException_QNAME = new QName("http://gatewayws.pandatech.com/", "InterruptedException");
-    private final static QName _Facturacion_QNAME = new QName("http://gatewayws.pandatech.com/", "Facturacion");
+    private final static QName _ComprobanteXmlResponse_QNAME = new QName("http://gatewayws.pandatech.com/", "comprobanteXmlResponse");
+    private final static QName _ComprobanteXml_QNAME = new QName("http://gatewayws.pandatech.com/", "comprobanteXml");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.pandatech.gatewayws
@@ -36,11 +38,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FacturacionResponse }
+     * Create an instance of {@link Facturar }
      * 
      */
-    public FacturacionResponse createFacturacionResponse() {
-        return new FacturacionResponse();
+    public Facturar createFacturar() {
+        return new Facturar();
+    }
+
+    /**
+     * Create an instance of {@link FacturarResponse }
+     * 
+     */
+    public FacturarResponse createFacturarResponse() {
+        return new FacturarResponse();
     }
 
     /**
@@ -52,20 +62,37 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Facturacion_Type }
+     * Create an instance of {@link ComprobanteXmlResponse }
      * 
      */
-    public Facturacion_Type createFacturacion_Type() {
-        return new Facturacion_Type();
+    public ComprobanteXmlResponse createComprobanteXmlResponse() {
+        return new ComprobanteXmlResponse();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FacturacionResponse }{@code >}}
+     * Create an instance of {@link ComprobanteXml }
      * 
      */
-    @XmlElementDecl(namespace = "http://gatewayws.pandatech.com/", name = "FacturacionResponse")
-    public JAXBElement<FacturacionResponse> createFacturacionResponse(FacturacionResponse value) {
-        return new JAXBElement<FacturacionResponse>(_FacturacionResponse_QNAME, FacturacionResponse.class, null, value);
+    public ComprobanteXml createComprobanteXml() {
+        return new ComprobanteXml();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Facturar }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://gatewayws.pandatech.com/", name = "facturar")
+    public JAXBElement<Facturar> createFacturar(Facturar value) {
+        return new JAXBElement<Facturar>(_Facturar_QNAME, Facturar.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FacturarResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://gatewayws.pandatech.com/", name = "facturarResponse")
+    public JAXBElement<FacturarResponse> createFacturarResponse(FacturarResponse value) {
+        return new JAXBElement<FacturarResponse>(_FacturarResponse_QNAME, FacturarResponse.class, null, value);
     }
 
     /**
@@ -78,12 +105,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Facturacion_Type }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ComprobanteXmlResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://gatewayws.pandatech.com/", name = "Facturacion")
-    public JAXBElement<Facturacion_Type> createFacturacion(Facturacion_Type value) {
-        return new JAXBElement<Facturacion_Type>(_Facturacion_QNAME, Facturacion_Type.class, null, value);
+    @XmlElementDecl(namespace = "http://gatewayws.pandatech.com/", name = "comprobanteXmlResponse")
+    public JAXBElement<ComprobanteXmlResponse> createComprobanteXmlResponse(ComprobanteXmlResponse value) {
+        return new JAXBElement<ComprobanteXmlResponse>(_ComprobanteXmlResponse_QNAME, ComprobanteXmlResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ComprobanteXml }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://gatewayws.pandatech.com/", name = "comprobanteXml")
+    public JAXBElement<ComprobanteXml> createComprobanteXml(ComprobanteXml value) {
+        return new JAXBElement<ComprobanteXml>(_ComprobanteXml_QNAME, ComprobanteXml.class, null, value);
     }
 
 }

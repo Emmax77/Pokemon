@@ -4,104 +4,7 @@
 
 <xs:element name="FacturacionResponse" type="tns:FacturacionResponse"/>
 
-<xs:element name="autenticacion" type="tns:autenticacion"/>
-
-<xs:element name="autenticacionResponse" type="tns:autenticacionResponse"/>
-
-<xs:element name="comprobanteXml" type="tns:comprobanteXml"/>
-
-<xs:element name="comprobanteXmlResponse" type="tns:comprobanteXmlResponse"/>
-
-<xs:element name="creacionObjetoJson" type="tns:creacionObjetoJson"/>
-
-<xs:element name="creacionObjetoJsonResponse" type="tns:creacionObjetoJsonResponse"/>
-
-<xs:element name="desconexion" type="tns:desconexion"/>
-
-<xs:element name="desconexionResponse" type="tns:desconexionResponse"/>
-
-<xs:element name="enviarDocumento" type="tns:enviarDocumento"/>
-
-<xs:element name="enviarDocumentoResponse" type="tns:enviarDocumentoResponse"/>
-
-<xs:element name="firmaXml" type="tns:firmaXml"/>
-
-<xs:element name="firmaXmlResponse" type="tns:firmaXmlResponse"/>
-
-<xs:element name="validacionEstado" type="tns:validacionEstado"/>
-
-<xs:element name="validacionEstadoResponse" type="tns:validacionEstadoResponse"/>
-
-<xs:complexType name="enviarDocumento">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="enviarDocumentoResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="creacionObjetoJson">
-<xs:sequence>
-<xs:element name="tipoIdEmisor" type="xs:string" minOccurs="0"/>
-<xs:element name="numeroIdEmisor" type="xs:string" minOccurs="0"/>
-<xs:element name="tipoIdReceptor" type="xs:string" minOccurs="0"/>
-<xs:element name="numeroIdReceptor" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="creacionObjetoJsonResponse">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="comprobanteXml">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="comprobanteXmlResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="firmaXml">
-<xs:sequence>
-<xs:element name="rutaCertificadop12" type="xs:string" minOccurs="0"/>
-<xs:element name="pin" type="xs:string" minOccurs="0"/>
-<xs:element name="rutaXml" type="xs:string" minOccurs="0"/>
-<xs:element name="rutaGuardado" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="firmaXmlResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="validacionEstado">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="validacionEstadoResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="autenticacion">
-<xs:sequence>
-<xs:element name="usuario" type="xs:string" minOccurs="0"/>
-<xs:element name="password" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="autenticacionResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
+<xs:element name="InterruptedException" type="tns:InterruptedException"/>
 
 <xs:complexType name="Facturacion">
 <xs:sequence>
@@ -124,13 +27,9 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="desconexion">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="desconexionResponse">
+<xs:complexType name="InterruptedException">
 <xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0"/>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

@@ -31,24 +31,21 @@ public interface Facturacion {
      * @param rutaCertificadop12
      * @param numeroIdReceptor
      * @param pin
-     * @param rutaGuardado
      * @param usuario
      * @param rutaXml
-     * @param tipoIdEmisor
-     * @param numeroIdEmisor
      * @param tipoIdReceptor
      * @return
      *     returns java.lang.String
      * @throws InterruptedException_Exception
      */
-    @WebMethod(operationName = "Facturacion")
+    @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Facturacion", targetNamespace = "http://gatewayws.pandatech.com/", className = "com.pandatech.gatewayws.Facturacion_Type")
-    @ResponseWrapper(localName = "FacturacionResponse", targetNamespace = "http://gatewayws.pandatech.com/", className = "com.pandatech.gatewayws.FacturacionResponse")
-    @Action(input = "http://gatewayws.pandatech.com/Facturacion/FacturacionRequest", output = "http://gatewayws.pandatech.com/Facturacion/FacturacionResponse", fault = {
-        @FaultAction(className = InterruptedException_Exception.class, value = "http://gatewayws.pandatech.com/Facturacion/Facturacion/Fault/InterruptedException")
+    @RequestWrapper(localName = "facturar", targetNamespace = "http://gatewayws.pandatech.com/", className = "com.pandatech.gatewayws.Facturar")
+    @ResponseWrapper(localName = "facturarResponse", targetNamespace = "http://gatewayws.pandatech.com/", className = "com.pandatech.gatewayws.FacturarResponse")
+    @Action(input = "http://gatewayws.pandatech.com/Facturacion/facturarRequest", output = "http://gatewayws.pandatech.com/Facturacion/facturarResponse", fault = {
+        @FaultAction(className = InterruptedException_Exception.class, value = "http://gatewayws.pandatech.com/Facturacion/facturar/Fault/InterruptedException")
     })
-    public String facturacion(
+    public String facturar(
         @WebParam(name = "usuario", targetNamespace = "")
         String usuario,
         @WebParam(name = "password", targetNamespace = "")
@@ -59,17 +56,32 @@ public interface Facturacion {
         String pin,
         @WebParam(name = "rutaXml", targetNamespace = "")
         String rutaXml,
-        @WebParam(name = "rutaGuardado", targetNamespace = "")
-        String rutaGuardado,
-        @WebParam(name = "tipoIdEmisor", targetNamespace = "")
-        String tipoIdEmisor,
-        @WebParam(name = "numeroIdEmisor", targetNamespace = "")
-        String numeroIdEmisor,
         @WebParam(name = "tipoIdReceptor", targetNamespace = "")
         String tipoIdReceptor,
         @WebParam(name = "numeroIdReceptor", targetNamespace = "")
         String numeroIdReceptor)
         throws InterruptedException_Exception
     ;
+
+    /**
+     * 
+     * @param password
+     * @param clave
+     * @param usuario
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "comprobanteXml", targetNamespace = "http://gatewayws.pandatech.com/", className = "com.pandatech.gatewayws.ComprobanteXml")
+    @ResponseWrapper(localName = "comprobanteXmlResponse", targetNamespace = "http://gatewayws.pandatech.com/", className = "com.pandatech.gatewayws.ComprobanteXmlResponse")
+    @Action(input = "http://gatewayws.pandatech.com/Facturacion/comprobanteXmlRequest", output = "http://gatewayws.pandatech.com/Facturacion/comprobanteXmlResponse")
+    public String comprobanteXml(
+        @WebParam(name = "usuario", targetNamespace = "")
+        String usuario,
+        @WebParam(name = "password", targetNamespace = "")
+        String password,
+        @WebParam(name = "clave", targetNamespace = "")
+        String clave);
 
 }
