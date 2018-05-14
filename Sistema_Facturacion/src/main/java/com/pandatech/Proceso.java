@@ -1,8 +1,11 @@
-
-
 package com.pandatech;
 
+import com.google.gson.Gson;
+import com.pandatech.bean.RespuestaCliente;
 import com.pandatech.gatewayws.Facturacion_Service;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
@@ -15,13 +18,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.WebServiceRef;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileItemFactory;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
-
+import static java.lang.System.out;
+import javax.servlet.ServletContext;
 
 /**
  *
@@ -46,9 +44,11 @@ public class Proceso extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        /*
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+            /* TODO output your page here. You may use following sample code. 
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -59,6 +59,7 @@ public class Proceso extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }
+         */
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -89,32 +90,40 @@ public class Proceso extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
 
-   
- 
-    
-        
-        
-      try { // Call Web Service Operation
-          com.pandatech.gatewayws.Facturacion port = service.getFacturacionPort();
-          // TODO initialize WS operation arguments here
+        try { // Call Web Service Operation
+            com.pandatech.gatewayws.Facturacion port = service.getFacturacionPort();
+            // TODO initialize WS operation arguments here
             java.lang.String usuario = request.getParameter("usuario");
             java.lang.String password = request.getParameter("password");
-           
+
             java.lang.String rutaCertificadop12 = request.getParameter("llave");
             java.lang.String pin = request.getParameter("pin");
-            java.lang.String rutaXml =request.getParameter("xml");
-            
-            
+            java.lang.String rutaXml = request.getParameter("xml");
+
             java.lang.String tipoIdReceptor = "0";
             java.lang.String numeroIdReceptor = "0";
-          // TODO process result here
+            // TODO process result here
             java.lang.String result = port.facturar(usuario, password, rutaCertificadop12, pin, rutaXml, tipoIdReceptor, numeroIdReceptor);
-          System.out.println("Result = "+result);
-      } catch (Exception ex) {
-          // TODO handle custom exceptions here
-      }
- 
-        
+            out.println("Result = " + result);
+            Gson gson = new Gson();
+            RespuestaCliente json = gson.fromJson(result, RespuestaCliente.class);
+
+            String res = json.getComprobanteXml();
+            out.println(res);
+            
+            String alerta = guardarXml(res);
+
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert(" + '"' + json.getAutenticacion() + "\\n" + json.getFirma() + "\\n" + json.getFactura() + "\\n" + alerta + '"' +");");
+            out.println("location='index.html';");
+            out.println("</script>");
+
+        } catch (Exception ex) {
+            // TODO handle custom exceptions here
+        }
+
         /*
         try { // Call Web Service Operation
             com.pandatech.gatewayws.Facturacion port = service.getFacturacionPort();
@@ -132,9 +141,24 @@ public class Proceso extends HttpServlet {
         } catch (Exception ex) {
             // TODO handle custom exceptions here
         }
-*/
-    
+         */
     }
+
+    public String guardarXml(String xml) {
+        String respuesta = "";
+        try {
+            String ruta = "C://temp/PT-factura.xml";
+            File archivo = new File(ruta);
+            BufferedWriter bw = new BufferedWriter(new FileWriter(archivo));
+            bw.write(xml);
+            bw.close();
+            respuesta = "Comprobante Xml creado en la siguiente ruta: " + ruta;
+        } catch (Exception e) {
+            respuesta = e.toString();
+        }
+        return respuesta;
+    }
+
     /**
      * Returns a short description of the servlet.
      *
