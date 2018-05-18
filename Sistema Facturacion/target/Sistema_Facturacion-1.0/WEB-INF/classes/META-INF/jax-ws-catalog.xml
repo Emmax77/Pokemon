@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/GatewayWS/Facturacion?wdl" uri="wsdl/localhost_8080/GatewayWS/Facturacion.wdl.xml"/>
+    <system systemId="http://localhost:8080/GatewayWS/Facturacion?wsdl" uri="wsdl/localhost_8080/GatewayWS/Facturacion.wsdl"/>
+    <system systemId="http://localhost:8080/GatewayWS/Facturacion?xsd=1" uri="wsdl/localhost_8080/GatewayWS/Facturacion.xsd_1.xsd"/>
+    <system systemId="http://192.168.1.165:8080/GatewayWS/Facturacion?wsdl" uri="wsdl/192.168.1.165_8080/GatewayWS/Facturacion.wsdl"/>
+    <system systemId="http://192.168.1.165:8080/GatewayWS/Facturacion?xsd=1" uri="wsdl/192.168.1.165_8080/GatewayWS/Facturacion.xsd_1.xsd"/>
+</catalog>
