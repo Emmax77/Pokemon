@@ -29,11 +29,9 @@ public interface Facturacion {
      * 
      * @param password
      * @param rutaCertificadop12
-     * @param numeroIdReceptor
      * @param pin
      * @param usuario
      * @param rutaXml
-     * @param tipoIdReceptor
      * @return
      *     returns java.lang.String
      * @throws InterruptedException_Exception
@@ -55,11 +53,7 @@ public interface Facturacion {
         @WebParam(name = "pin", targetNamespace = "")
         String pin,
         @WebParam(name = "rutaXml", targetNamespace = "")
-        String rutaXml,
-        @WebParam(name = "tipoIdReceptor", targetNamespace = "")
-        String tipoIdReceptor,
-        @WebParam(name = "numeroIdReceptor", targetNamespace = "")
-        String numeroIdReceptor)
+        String rutaXml)
         throws InterruptedException_Exception
     ;
 

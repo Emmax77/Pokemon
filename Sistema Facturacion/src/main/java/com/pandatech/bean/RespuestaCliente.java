@@ -50,4 +50,6 @@ public class RespuestaCliente {
     public void setComprobanteXml(String comprobanteXml) {
         this.comprobanteXml = comprobanteXml;
     }
+    
+    
 }

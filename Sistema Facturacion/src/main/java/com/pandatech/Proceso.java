@@ -3,6 +3,7 @@ package com.pandatech;
 import com.google.gson.Gson;
 import com.pandatech.bean.RespuestaCliente;
 import com.pandatech.gatewayws.Facturacion_Service;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -28,8 +29,10 @@ import javax.servlet.ServletContext;
 @WebServlet(name = "Proceso", urlPatterns = {"/Proceso"})
 public class Proceso extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/192.168.1.165_8080/GatewayWS/Facturacion.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/GatewayWS/Facturacion.wsdl")
     private Facturacion_Service service;
+
+   
 
     //   @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/192.168.1.165_8080/GatewayWS/Facturacion.wsdl")
     //   private Facturacion_Service service;
@@ -90,20 +93,23 @@ public class Proceso extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
 
-        try { // Call Web Service Operation
+        
+     try { // Call Web Service Operation
             com.pandatech.gatewayws.Facturacion port = service.getFacturacionPort();
             // TODO initialize WS operation arguments here
             java.lang.String usuario = request.getParameter("usuario");
             java.lang.String password = request.getParameter("password");
 
+            /*
             java.lang.String rutaCertificadop12 = request.getParameter("llave");
             java.lang.String pin = request.getParameter("pin");
             java.lang.String rutaXml = request.getParameter("xml");
-
-            java.lang.String tipoIdReceptor = "0";
-            java.lang.String numeroIdReceptor = "0";
+            */
+            java.lang.String rutaCertificadop12 = "C:/Users/Emmanuel Guzman/Desktop/archivos/llavecriptografica_310168440106.p12";
+            java.lang.String pin = request.getParameter("pin");
+            java.lang.String rutaXml = "C:/Users/Emmanuel Guzman/Desktop/archivos/buena/factura.xml";
             // TODO process result here
-            java.lang.String result = port.facturar(usuario, password, rutaCertificadop12, pin, rutaXml, tipoIdReceptor, numeroIdReceptor);
+            java.lang.String result = port.facturar(usuario, password, rutaCertificadop12, pin, rutaXml);
             out.println("Result = " + result);
             Gson gson = new Gson();
             RespuestaCliente json = gson.fromJson(result, RespuestaCliente.class);

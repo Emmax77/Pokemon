@@ -19,6 +19,25 @@
             <!-- Google Fonts-->
             <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
             <link rel="stylesheet" href="assets/js/Lightweight-Chart/cssCharts.css"> 
+                <script>
+                    window.onload = function () {
+                        
+                        var xml = document.getElementById("ruta").onchange = rutaXml;
+                        var p12 = document.getElementById("rutaCertificado").onchange = rutap12;
+                        
+                        
+                        function rutaXml() {
+                            var x = document.getElementById("xml").value;
+                            document.getElementById("ruta").innerHTML = x;
+                            document.getElementById("ruta").value = x;
+                        }
+                        function rutap12() {
+                            var n = document.getElementById("llave").value;
+                            document.getElementById("rutaCertificado").innerHTML = n;
+                            document.getElementById("rutaCertificado").value = n;
+                        }
+                    }
+                </script>
                 </head>
                 <body>
                     <div id="wrapper">
@@ -218,11 +237,11 @@
                             <div class="sidebar-collapse">
                                 <ul class="nav" id="main-menu">
 
-                                    
+
                                     <li>
                                         <a class="active-menu waves-effect waves-dark" href="empty.html"><i class="fa fa-fw fa-file"></i> Facturacion</a>
                                     </li>
-                                    
+
                                     <li>
                                         <a class="active-menu waves-effect waves-dark" href="empty.html"><i class="fa fa-fw fa-file"></i> Recepcion</a>
                                     </li>
@@ -257,76 +276,77 @@
                                             <div class="card-content"> 
                                                 <div class="row">
                                                     <form action="Proceso" method="POST">
-                                                        
+
                                                         <!-- XML-->
-                                                        
-                                                        
-                                                         <div>
-                                                            
-                                                <div class="file-field">
-                                                                           <div class="btn btn-primary btn-sm float-left">
-                                                                           <span>Subir archivo XML</span>
-                                                                           <input type="file" name="xml">
-                                                                       </div>
-                                                                       <div class="file-path-wrapper">
-                                                                           <input class="file-path validate" type="text" placeholder="Subir archivo XML" accept="text/xml">
-                                                                       </div>
-                                                </div>   
-                                                        
+
+
+                                                        <div>
+
+                                                            <div class="file-field">
+                                                                <div class="btn btn-primary btn-sm float-left">
+                                                                    <span>Subir archivo XML</span>
+                                                                    <input type="file" name="xml" id="xml" >
+                                                                </div>
+                                                                <div class="file-path-wrapper">
+                                                                    <input class="file-path validate" type="text" placeholder="Subir archivo XML" accept="text/xml" name="ruta" id="ruta">
+                                                                </div>
+                                                            </div>   
+
+
                                                         </div>
-                                                        
+
                                                         <!-- LLave criptografica-->
-                                                        
-                                                         <div>
-                                                            
-                                                                           <div class="file-field">
-                                                                           <div class="btn btn-primary btn-sm float-left">
-                                                                           <span>Subir archivo p12</span>
-                                                                           <input type="file" name="llave">
-                                                                           </div>
-                                                                           <div class="file-path-wrapper">
-                                                                               <input class="file-path validate" type="text" placeholder="Subir archivo p12" accept="p12/*">
-                                                                           </div>
-                                                                   </div>   
-                                                        
+
+                                                        <div>
+
+                                                            <div class="file-field">
+                                                                <div class="btn btn-primary btn-sm float-left">
+                                                                    <span>Subir archivo p12</span>
+                                                                    <input type="file" name="llave" id="llave">
+                                                                </div>
+                                                                <div class="file-path-wrapper">
+                                                                    <input class="file-path validate" type="text" placeholder="Subir archivo p12" accept="p12/*" id="rutaCertificado" name="rutaCertificado">
+                                                                </div>
+                                                            </div>  
+
                                                         </div>
-                                                        
-                                                        
+
+
                                                         <!-- usuario -->
-									<div class="input-field col s6">
-									  <i class="material-icons prefix">account_circle</i>
-                                                                          <input id="icon_prefix" type="text" class="validate" name="usuario">
-									  <label for="icon_prefix">Usuario</label>
-									</div>
-                                                        <!-- Password-->
-									<div class="input-field col s6">
-									  <i class="material-icons prefix">vpn_key</i>
-                                                                          <input id="icon_telephone" type="tel" class="validate" name="password">
-                                                                              <label for="icon_telephone">Contrase&ntilde;a</label>
-									</div>
-                                                        
-                                                        
-                                                        <!-- PIN-->
-                                                        
-                                                        
                                                         <div class="input-field col s6">
-									  <i class="material-icons prefix">pin_key</i>
-                                                                          <input id="icon_telephone" type="tel" class="validate" name="pin">
-                                                                              <label for="icon_telephone">Pin</label>
-									</div>
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
+                                                            <i class="material-icons prefix">account_circle</i>
+                                                            <input id="icon_prefix" type="text" class="validate" name="usuario">
+                                                                <label for="icon_prefix">Usuario</label>
+                                                        </div>
+                                                        <!-- Password-->
+                                                        <div class="input-field col s6">
+                                                            <i class="material-icons prefix">vpn_key</i>
+                                                            <input id="icon_telephone" type="tel" class="validate" name="password">
+                                                                <label for="icon_telephone">Contrase&ntilde;a</label>
+                                                        </div>
+
+
+                                                        <!-- PIN-->
+
+
+                                                        <div class="input-field col s6">
+                                                            <i class="material-icons prefix">pin_key</i>
+                                                            <input id="icon_telephone" type="tel" class="validate" name="pin">
+                                                                <label for="icon_telephone">Pin</label>
+                                                        </div>
+
+
+
+
+
+
+
                                                         <!-- Autenticar -->
                                                         <div>
-                                                        <button class="waves-effect waves-light btn" type="submit"><i class="material-icons left">cloud</i>Autenticar</button>
+                                                            <button class="waves-effect waves-light btn" type="submit"><i class="material-icons left">cloud</i>Autenticar</button>
                                                         </div>    
-                                                        </form>
-								  </div>
+                                                    </form>
+                                                </div>
                                                 <div class="clearBoth"><br/></div>
 
                                             </div>

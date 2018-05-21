@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.WebServiceRef;
 import static java.lang.System.out;
 import javax.servlet.ServletContext;
+import javax.servlet.http.Part;
 
 /**
  *
@@ -90,15 +91,19 @@ public class Proceso extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
 
+
         try { // Call Web Service Operation
             com.pandatech.gatewayws.Facturacion port = service.getFacturacionPort();
             // TODO initialize WS operation arguments here
             java.lang.String usuario = request.getParameter("usuario");
             java.lang.String password = request.getParameter("password");
 
-            java.lang.String rutaCertificadop12 = request.getParameter("llave");
+            //java.lang.String rutaCertificadop12 = request.getParameter("rutaCertificado");
+            //java.lang.String pin = request.getParameter("pin");
+            //java.lang.String rutaXml = request.getParameter("ruta");
+            java.lang.String rutaCertificadop12 = "C:/Users/Emmanuel Guzman/Desktop/archivos/llavecriptografica_310168440106.p12";
             java.lang.String pin = request.getParameter("pin");
-            java.lang.String rutaXml = request.getParameter("xml");
+            java.lang.String rutaXml = "C:/Users/Emmanuel Guzman/Desktop/archivos/buena/factura_SR.xml";
 
             java.lang.String tipoIdReceptor = "0";
             java.lang.String numeroIdReceptor = "0";
@@ -110,13 +115,13 @@ public class Proceso extends HttpServlet {
 
             String res = json.getComprobanteXml();
             out.println(res);
-            
+
             String alerta = guardarXml(res);
 
             response.setContentType("text/html;charset=UTF-8");
             PrintWriter out = response.getWriter();
             out.println("<script type=\"text/javascript\">");
-            out.println("alert(" + '"' + json.getAutenticacion() + "\\n" + json.getFirma() + "\\n" + json.getFactura() + "\\n" + alerta + '"' +");");
+            out.println("alert(" + '"' + json.getAutenticacion() + "\\n" + json.getFirma() + "\\n" + json.getFactura() + "\\n" + alerta + '"' + ");");
             out.println("location='index.html';");
             out.println("</script>");
 
@@ -142,6 +147,16 @@ public class Proceso extends HttpServlet {
             // TODO handle custom exceptions here
         }
          */
+    }
+
+    public String getFileName(final Part part) {
+        for (String content : part.getHeader("content-disposition").split(";")) {
+            if (content.trim().startsWith("filename")) {
+                return content.substring(
+                        content.indexOf('=') + 1).trim().replace("\"", "");
+            }
+        }
+        return null;
     }
 
     public String guardarXml(String xml) {

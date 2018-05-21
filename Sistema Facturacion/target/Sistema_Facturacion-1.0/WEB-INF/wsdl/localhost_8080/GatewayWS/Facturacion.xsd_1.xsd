@@ -1,27 +1,40 @@
 <?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.3 (tags/2.3-7528; 2013-04-29T19:34:10+0000) JAXWS-RI/2.2.8 JAXWS/2.2 svn-revision#unknown. --><xs:schema xmlns:tns="http://gatewayws.pandatech.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://gatewayws.pandatech.com/">
 
-<xs:element name="Facturacion" type="tns:Facturacion"/>
-
-<xs:element name="FacturacionResponse" type="tns:FacturacionResponse"/>
-
 <xs:element name="InterruptedException" type="tns:InterruptedException"/>
 
-<xs:complexType name="Facturacion">
+<xs:element name="comprobanteXml" type="tns:comprobanteXml"/>
+
+<xs:element name="comprobanteXmlResponse" type="tns:comprobanteXmlResponse"/>
+
+<xs:element name="facturar" type="tns:facturar"/>
+
+<xs:element name="facturarResponse" type="tns:facturarResponse"/>
+
+<xs:complexType name="comprobanteXml">
+<xs:sequence>
+<xs:element name="usuario" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+<xs:element name="clave" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="comprobanteXmlResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="facturar">
 <xs:sequence>
 <xs:element name="usuario" type="xs:string" minOccurs="0"/>
 <xs:element name="password" type="xs:string" minOccurs="0"/>
 <xs:element name="rutaCertificadop12" type="xs:string" minOccurs="0"/>
 <xs:element name="pin" type="xs:string" minOccurs="0"/>
 <xs:element name="rutaXml" type="xs:string" minOccurs="0"/>
-<xs:element name="rutaGuardado" type="xs:string" minOccurs="0"/>
-<xs:element name="tipoIdEmisor" type="xs:string" minOccurs="0"/>
-<xs:element name="numeroIdEmisor" type="xs:string" minOccurs="0"/>
-<xs:element name="tipoIdReceptor" type="xs:string" minOccurs="0"/>
-<xs:element name="numeroIdReceptor" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="FacturacionResponse">
+<xs:complexType name="facturarResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>

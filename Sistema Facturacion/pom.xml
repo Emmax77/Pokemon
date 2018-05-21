@@ -156,13 +156,13 @@
                         </goals>
                         <configuration>
                             <wsdlFiles>
-                                <wsdlFile>192.168.1.165_8080/GatewayWS/Facturacion.wsdl</wsdlFile>
+                                <wsdlFile>localhost_8080/GatewayWS/Facturacion.wsdl</wsdlFile>
                             </wsdlFiles>
                             <packageName></packageName>
                             <vmArgs>
                                 <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
                             </vmArgs>
-                            <wsdlLocation>http://192.168.1.165:8080/GatewayWS/Facturacion?wsdl</wsdlLocation>
+                            <wsdlLocation>http://localhost:8080/GatewayWS/Facturacion?wsdl</wsdlLocation>
                             <staleFile>${project.build.directory}/jaxws/stale/Facturacion.stale</staleFile>
                         </configuration>
                         <id>wsimport-generate-Facturacion</id>

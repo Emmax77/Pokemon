@@ -21,8 +21,6 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="rutaCertificadop12" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="pin" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="rutaXml" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="tipoIdReceptor" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="numeroIdReceptor" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,9 +35,7 @@ import javax.xml.bind.annotation.XmlType;
     "password",
     "rutaCertificadop12",
     "pin",
-    "rutaXml",
-    "tipoIdReceptor",
-    "numeroIdReceptor"
+    "rutaXml"
 })
 public class Facturar {
 
@@ -48,8 +44,6 @@ public class Facturar {
     protected String rutaCertificadop12;
     protected String pin;
     protected String rutaXml;
-    protected String tipoIdReceptor;
-    protected String numeroIdReceptor;
 
     /**
      * Gets the value of the usuario property.
@@ -169,54 +163,6 @@ public class Facturar {
      */
     public void setRutaXml(String value) {
         this.rutaXml = value;
-    }
-
-    /**
-     * Gets the value of the tipoIdReceptor property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTipoIdReceptor() {
-        return tipoIdReceptor;
-    }
-
-    /**
-     * Sets the value of the tipoIdReceptor property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTipoIdReceptor(String value) {
-        this.tipoIdReceptor = value;
-    }
-
-    /**
-     * Gets the value of the numeroIdReceptor property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNumeroIdReceptor() {
-        return numeroIdReceptor;
-    }
-
-    /**
-     * Sets the value of the numeroIdReceptor property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNumeroIdReceptor(String value) {
-        this.numeroIdReceptor = value;
     }
 
 }
